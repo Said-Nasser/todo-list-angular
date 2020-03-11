@@ -1,0 +1,38 @@
+<li class="d-flex border-bottom" onMouseEnter="" onMouseLeave="" *ngIf="!editing">
+    <div class="custom-control custom-checkbox align-self-start">
+        <input type="checkbox" 
+                class="custom-control-input" 
+                (change)="toggleDone($event)"
+                id="customCheck{{index}}"
+                 />
+        <label class="custom-control-label" for="customCheck{{index}}"></label>
+    </div>
+    <button class="delete btn btn-default text-danger ml-3 rounded-0 border-0 align-self-start" (click)="onDelete()">
+        <img src="./trash.svg" alt="delete" width="15px">
+    </button>
+    <p class="m-0 flex-fill px-4 py-2 h5 font-weight-lighter align-self-start">
+        {{ itemText }}
+    </p>
+    <button class="edit btn btn-default text-success rounded-0 border-0 align-self-start" (click)="onEdit()">
+        <img src="./edit.svg" alt="edit" width="15px">
+    </button>
+</li>
+
+
+
+<li *ngIf="editing">
+    <form (submit)="onSave(newText.value, index)" class="edit-todo">
+        <div class="form-row">
+            <div class="col-12">
+                <div class="input-group save">
+                    <input class="form-control rounded-0 border-0 p-4" type="text" [value]="itemText" #newText />
+                    <div class="input-group-prepend">
+                        <button class="input-group-text btn btn-outline-light border-0">
+                            <img src="./save.svg" alt="save" width="15px">
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</li>
